@@ -1,0 +1,24 @@
+[Unit]
+Description=alexStartupService
+Wants=
+Documentation=
+After=network.target 
+Requires=
+
+[Service]
+Type=forking
+#EnvironmentFile=-/etc/default/xpra
+User=alessandro
+ExecStart=/bin/sh /home/alessandro/vnc.sh
+#rely on SIGKILL which returns 128+15=143
+#SuccessExitStatus=0 143
+#Restart=on-abnormal
+#PIDFile=/run/xpra.pid
+#ProtectSystem=strict
+#ReadWritePaths=/run /tmp
+#PrivateDevices=true
+#ProtectKernelTunables=true
+#ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
